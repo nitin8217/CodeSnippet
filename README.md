@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Code Snippets ✨
 
-## Getting Started
+A modern web application for managing and sharing code snippets built with Next.js 14, Prisma, and TypeScript.
 
-First, run the development server:
+## Features 🚀
 
+- **Create Snippets**: Easily create and store your code snippets
+- **Edit & Delete**: Full CRUD functionality for managing your snippets
+- **Modern UI**: Clean and responsive interface with Tailwind CSS
+- **Server Actions**: Utilizing Next.js 14 server actions for data mutations
+- **Type Safety**: Built with TypeScript for better development experience
+- **Database**: SQLite with Prisma ORM for data persistence
+
+## Tech Stack 💻
+
+- [Next.js 14](https://nextjs.org/) - React Framework
+- [Prisma](https://www.prisma.io/) - ORM
+- [TypeScript](https://www.typescriptlang.org/) - Language
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Lucide Icons](https://lucide.dev/) - Icons
+- [SQLite](https://www.sqlite.org/) - Database
+
+## Getting Started 🛠️
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/code-snippets.git
+cd code-snippets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up your environment variables:
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Set up the database:
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-## Learn More
+5. Run the development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure 📁
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── actions/        # Server actions for data mutations
+├── app/           # Next.js app router pages
+├── components/    # Reusable UI components
+└── lib/          # Utility functions and configurations
+```
 
-## Deploy on Vercel
+## Features in Detail 🔍
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Creating Snippets
+- Click "New Snippet" button
+- Enter title and code
+- Click "Create Snippet" to save
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Editing Snippets
+- Navigate to a snippet
+- Click "Edit" button
+- Modify code in the editor
+- Click "Save Changes"
+
+### Deleting Snippets
+- Navigate to a snippet
+- Click "Delete" button
+- Confirm deletion
+
+## Contributing 🤝
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License 📝
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments 🙏
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+---
+
+Made with ❤️ by [Nitin]
