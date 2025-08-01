@@ -19,6 +19,20 @@
 .DS_Store
 *.pem
 
+# local env files
+.env*.local
+.env.development
+
+# Keep production env for deployment
+# .env.production
+
+# database
+prisma/dev.db-journal
+
+# IDE
+.vscode/
+.idea/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
