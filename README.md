@@ -12,7 +12,7 @@ A beautiful, modern web application for managing and sharing your code snippets.
 
 **🚀 [Try CodeSnippets Live](https://codesnippet-production-0833.up.railway.app)**
 
-![CodeSnippets Screenshot](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=CodeSnippets+App+Screenshot)
+
 
 ## ✨ Features
 
