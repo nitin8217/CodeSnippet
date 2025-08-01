@@ -32,7 +32,7 @@ export default async function Home() {
             <div className="flex items-center justify-between">
               <h3 className="font-medium text-lg">{snippet.title}</h3>
               <Link href={`/snippet/${snippet.id}`}>
-                <Button variant="ghost" className="gap-2">
+                <Button variant="ghost" className="gap-2 hover:bg-blue-50 hover:text-blue-700 border hover:border-blue-200">
                   <EyeIcon className="w-4 h-4" />
                   View
                 </Button>

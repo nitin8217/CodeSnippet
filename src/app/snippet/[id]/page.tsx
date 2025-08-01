@@ -4,17 +4,22 @@ import Link from "next/link";
 import React from "react";
 import * as actions from "@/actions";
 import { notFound } from "next/navigation";
-import { Plus as PlusIcon, Eye as EyeIcon, Pencil as PencilIcon, Trash as TrashIcon } from 'lucide-react';
+import { PencilIcon, TrashIcon } from 'lucide-react';
 
 interface SnippetDetailProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 const SnippetDetailPage = async ({ params }: SnippetDetailProps) => {
-  const id = parseInt(params.id);
-  const snippet = await prisma.snippet.findUnique({ where: { id } });
+ 
+  const resolvedParams = await params;
+  const id = parseInt(resolvedParams.id);
+  
+  const snippet = await prisma.snippet.findUnique({
+    where: { id }
+  });
 
   if (!snippet) notFound();
 
@@ -28,13 +33,13 @@ const SnippetDetailPage = async ({ params }: SnippetDetailProps) => {
             <h1 className="text-2xl font-bold">{snippet.title}</h1>
             <div className="flex items-center gap-3">
               <Link href={`/snippet/${snippet.id}/edit`}>
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" className="gap-2 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300">
                   <PencilIcon className="w-4 h-4" />
                   Edit
                 </Button>
               </Link>
               <form action={deleteSnippetActions}>
-                <Button variant="destructive" type="submit" className="gap-2">
+                <Button variant="destructive" type="submit" className="gap-2 hover:bg-red-700 hover:scale-105 transform">
                   <TrashIcon className="w-4 h-4" />
                   Delete
                 </Button>
