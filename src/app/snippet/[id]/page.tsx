@@ -26,21 +26,24 @@ const SnippetDetailPage = async ({ params }: SnippetDetailProps) => {
   const deleteSnippetActions = actions.deleteSnippet.bind(null, snippet.id);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <div className="bg-white rounded-lg shadow-sm border">
-        <div className="p-6 border-b">
+    <div className="max-w-5xl mx-auto">
+      <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl overflow-hidden">
+        <div className="p-6 border-b border-gray-700 bg-gradient-to-r from-gray-800/50 to-gray-700/50">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">{snippet.title}</h1>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-100 mb-2">{snippet.title}</h1>
+              <p className="text-gray-400">Code snippet details and actions</p>
+            </div>
             <div className="flex items-center gap-3">
               <Link href={`/snippet/${snippet.id}/edit`}>
-                <Button variant="outline" className="gap-2 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300">
-                  <PencilIcon className="w-4 h-4" />
+                <Button variant="outline" className="gap-2 group">
+                  <PencilIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   Edit
                 </Button>
               </Link>
               <form action={deleteSnippetActions}>
-                <Button variant="destructive" type="submit" className="gap-2 hover:bg-red-700 hover:scale-105 transform">
-                  <TrashIcon className="w-4 h-4" />
+                <Button variant="destructive" type="submit" className="gap-2 group">
+                  <TrashIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   Delete
                 </Button>
               </form>
@@ -48,10 +51,20 @@ const SnippetDetailPage = async ({ params }: SnippetDetailProps) => {
           </div>
         </div>
         
-        <div className="p-6 bg-gray-50">
-          <pre className="p-4 bg-white rounded-lg border overflow-x-auto">
-            <code className="text-sm font-mono">{snippet.code}</code>
-          </pre>
+        <div className="p-6">
+          <div className="bg-gray-900/80 rounded-lg border border-gray-700 overflow-hidden">
+            <div className="flex items-center justify-between p-3 bg-gray-800/50 border-b border-gray-700">
+              <span className="text-sm text-gray-400 font-medium">Code Content</span>
+              <div className="flex space-x-1">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+            </div>
+            <pre className="p-6 overflow-x-auto text-sm bg-gray-900">
+              <code className="text-gray-100 font-mono leading-relaxed">{snippet.code}</code>
+            </pre>
+          </div>
         </div>
       </div>
     </div>

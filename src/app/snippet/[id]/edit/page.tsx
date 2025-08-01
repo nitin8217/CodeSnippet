@@ -23,14 +23,16 @@ const EditPageSnippet = async ({ params }: EditPageProps) => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Edit Snippet</h1>
-        <p className="text-gray-600">Update your code snippet with our interactive compiler</p>
+    <div className="max-w-7xl mx-auto">
+      <div className="mb-8 text-center">
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          Edit Snippet
+        </h1>
+        <p className="text-gray-400">Update your code snippet with our interactive compiler</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border">
-        <div className="p-6">
+      <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl">
+        <div className="p-8">
           <EditSnippetForm snippet={snippet} />
         </div>
       </div>

@@ -3,14 +3,16 @@
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-export const saveSnippet = async (id:number,code:string) =>
+export const saveSnippet = async (id:number, code:string, title:string) =>
 {
   await prisma.snippet.update({
     where: { 
         id,
      },
     data: { 
-        code },
+        code,
+        title
+    },
   });
   revalidatePath(`/snippet/${id}`);
   redirect(`/snippet/${id}`);
