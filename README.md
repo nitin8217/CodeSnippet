@@ -1,5 +1,3 @@
-# Code Snippets ✨
-
 # 📝 CodeSnippets - Modern Code Snippet Manager
 
 A beautiful, modern web application for managing and sharing your code snippets. Built with Next.js 15, Prisma, SQLite, and TailwindCSS.
@@ -8,6 +6,13 @@ A beautiful, modern web application for managing and sharing your code snippets.
 ![Prisma](https://img.shields.io/badge/Prisma-6.13.0-2D3748?style=for-the-badge&logo=prisma)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Railway](https://img.shields.io/badge/Railway-Deployed-success?style=for-the-badge&logo=railway&logoColor=white)
+
+## 🌐 Live Demo
+
+**🚀 [Try CodeSnippets Live](https://codesnippet-production-0833.up.railway.app)**
+
+![CodeSnippets Screenshot](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=CodeSnippets+App+Screenshot)
 
 ## ✨ Features
 
@@ -19,12 +24,14 @@ A beautiful, modern web application for managing and sharing your code snippets.
 - 📱 **Mobile Friendly** - Responsive design for all devices
 - 🔥 **Hot Reload** - Development with Turbopack
 - 🐳 **Docker Ready** - Containerized deployment
+- ⚡ **Server Actions** - Modern form handling with Next.js
+- 🔒 **Type Safe** - Full TypeScript implementation
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 15.4.5, React 19, TypeScript
 - **Styling**: TailwindCSS 4.0, Shadcn/ui components
-- **Database**: SQLite with Prisma ORM
+- **Database**: SQLite with Prisma ORM 6.13.0
 - **Code Editor**: CodeMirror with syntax highlighting
 - **Deployment**: Railway (Docker)
 - **Development**: Turbopack, ESLint, TypeScript
@@ -76,6 +83,8 @@ CodeSnippets/
 │   ├── app/                    # Next.js App Router
 │   │   ├── page.tsx           # Home page
 │   │   ├── layout.tsx         # Root layout
+│   │   ├── api/               # API routes
+│   │   │   └── health/        # Health check endpoint
 │   │   └── snippet/           # Snippet routes
 │   │       ├── new/           # Create snippet
 │   │       └── [id]/          # View/Edit snippet
@@ -90,7 +99,6 @@ CodeSnippets/
 ├── prisma/
 │   ├── schema.prisma         # Database schema
 │   └── migrations/           # Database migrations
-├── public/                   # Static assets
 ├── Dockerfile               # Docker configuration
 ├── railway.json            # Railway deployment config
 └── package.json            # Dependencies
@@ -118,25 +126,11 @@ model Snippet {
 
 ## 🌐 Deployment
 
-### Railway (Recommended)
+This app is deployed on Railway and optimized for containerized deployment.
 
-This app is optimized for Railway deployment:
-
-1. **Push to GitHub**
-2. **Connect to Railway**
-3. **Auto-deploy** - Railway detects Next.js and deploys automatically
+**Live URL**: [https://codesnippet-production-0833.up.railway.app](https://codesnippet-production-0833.up.railway.app)
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
-
-### Docker
-
-```bash
-# Build image
-docker build -t codesnippets .
-
-# Run container
-docker run -p 3000:3000 codesnippets
-```
 
 ## 🔧 Environment Variables
 
@@ -159,7 +153,7 @@ PORT=3000
 ### Snippet Management
 - Create, read, update, delete snippets
 - Dynamic routing with Next.js App Router
-- Server-side rendering for SEO
+- Server-side rendering for performance
 
 ### Modern Architecture
 - Next.js 15 with App Router
@@ -181,9 +175,10 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🔗 Links
 
-- **Live Demo**: [Your Railway URL]
-- **Repository**: https://github.com/nitin8217/CodeSnippet
-- **Issues**: https://github.com/nitin8217/CodeSnippet/issues
+- **🌐 Live Demo**: [CodeSnippets App](https://codesnippet-production-0833.up.railway.app)
+- **📱 Health Check**: [API Health](https://codesnippet-production-0833.up.railway.app/api/health)
+- **📂 Repository**: https://github.com/nitin8217/CodeSnippet
+- **🐛 Issues**: https://github.com/nitin8217/CodeSnippet/issues
 
 ## 🙏 Acknowledgments
 
@@ -196,109 +191,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Made with ❤️ by [nitin8217](https://github.com/nitin8217)**
-
-## Features 🚀
-
-- **Create Snippets**: Easily create and store your code snippets
-- **Edit & Delete**: Full CRUD functionality for managing your snippets
-- **Modern UI**: Clean and responsive interface with Tailwind CSS
-- **Server Actions**: Utilizing Next.js 14 server actions for data mutations
-- **Type Safety**: Built with TypeScript for better development experience
-- **Database**: SQLite with Prisma ORM for data persistence
-
-## Tech Stack 💻
-
-- [Next.js 14](https://nextjs.org/) - React Framework
-- [Prisma](https://www.prisma.io/) - ORM
-- [TypeScript](https://www.typescriptlang.org/) - Language
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Lucide Icons](https://lucide.dev/) - Icons
-- [SQLite](https://www.sqlite.org/) - Database
-
-## Getting Started 🛠️
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/code-snippets.git
-cd code-snippets
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up your environment variables:
-```bash
-cp .env.example .env
-```
-
-4. Set up the database:
-```bash
-npx prisma generate
-npx prisma db push
-```
-
-5. Run the development server:
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Project Structure 📁
-
-```
-src/
-├── actions/        # Server actions for data mutations
-├── app/           # Next.js app router pages
-├── components/    # Reusable UI components
-└── lib/          # Utility functions and configurations
-```
-
-## Features in Detail 🔍
-
-### Creating Snippets
-- Click "New Snippet" button
-- Enter title and code
-- Click "Create Snippet" to save
-
-### Editing Snippets
-- Navigate to a snippet
-- Click "Edit" button
-- Modify code in the editor
-- Click "Save Changes"
-
-### Deleting Snippets
-- Navigate to a snippet
-- Click "Delete" button
-- Confirm deletion
-
-## Contributing 🤝
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License 📝
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments 🙏
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Prisma Documentation](https://www.prisma.io/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-
----
-
-Made with ❤️ by [Nitin]
