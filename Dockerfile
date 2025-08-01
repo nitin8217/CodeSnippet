@@ -51,6 +51,18 @@ COPY --from=builder /app/src/generated ./src/generated
 # Create data directory for SQLite
 RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
 
+# Create a startup script to initialize database and start the app
+RUN echo '#!/bin/sh' > /app/start.sh && \
+    echo 'set -e' >> /app/start.sh && \
+    echo 'echo "=== Starting CodeSnippets App ==="' >> /app/start.sh && \
+    echo 'echo "Checking database connection..."' >> /app/start.sh && \
+    echo 'npx prisma migrate deploy --schema=./prisma/schema.prisma || echo "No migrations to run"' >> /app/start.sh && \
+    echo 'echo "Database ready!"' >> /app/start.sh && \
+    echo 'echo "Starting Next.js server on port $PORT..."' >> /app/start.sh && \
+    echo 'exec node server.js' >> /app/start.sh && \
+    chmod +x /app/start.sh && \
+    chown nextjs:nodejs /app/start.sh
+
 USER nextjs
 
 EXPOSE 3000
@@ -58,4 +70,4 @@ EXPOSE 3000
 ENV PORT 3000
 ENV DATABASE_URL="file:/app/data/dev.db"
 
-CMD ["node", "server.js"]
+CMD ["/app/start.sh"]
