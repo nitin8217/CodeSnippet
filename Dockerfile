@@ -20,6 +20,9 @@ COPY . .
 # Generate Prisma client with explicit schema path
 RUN npx prisma generate --schema=./prisma/schema.prisma
 
+# Create public directory if it doesn't exist
+RUN mkdir -p ./public
+
 # Build the app
 RUN npm run build
 
@@ -32,7 +35,9 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy the public folder
+# Create public directory and copy if it exists
+RUN mkdir -p ./public
+# Copy public folder contents 
 COPY --from=builder /app/public ./public
 
 # Automatically leverage output traces to reduce image size
