@@ -1,0 +1,7 @@
+src/generated/**
+prisma/generated/**
+.next/**
+node_modules/**
+build/**
+dist/**
+*.d.ts
