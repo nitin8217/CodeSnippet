@@ -3,6 +3,9 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { EyeIcon, PlusIcon } from "lucide-react";
 
+// Force this page to be dynamic (rendered at request time)
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const snippets = await prisma.snippet.findMany();
   

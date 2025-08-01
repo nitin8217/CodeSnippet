@@ -3,6 +3,9 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import React from 'react'
 
+// Force this page to be dynamic (rendered at request time)
+export const dynamic = 'force-dynamic';
+
 interface EditPageProps {
   params: Promise<{
     id: string
