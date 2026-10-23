@@ -1,13 +1,19 @@
-# 📝 CodeSnippets - Modern Code Snippet Manager
+# 📝 CodeSnippet
 
-A beautiful, modern web application for managing and sharing your code snippets. Built with Next.js 15, Supabase, and TailwindCSS.
+A web application for saving, viewing, editing, and deleting reusable code snippets. The app is deployed with Vercel and uses Supabase PostgreSQL for persistent storage.
 
 ![CodeSnippets App](https://img.shields.io/badge/Next.js-15.5.28-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
 ## 🌐 Live Demo
 
-Deploy the project using the instructions in [Deployment](#-deploy-to-vercel).
+**Production URL:** Add your Vercel URL here after deployment.
+
+The deployed app is powered by:
+
+- **Vercel** for hosting
+- **Supabase** for the database
+- **Next.js 15.5.28** for the application
 
 ## ✨ Features
 
@@ -18,7 +24,7 @@ Deploy the project using the instructions in [Deployment](#-deploy-to-vercel).
 - 🚀 **Fast Performance** - Optimized Next.js 15 with App Router
 - 📱 **Mobile Friendly** - Responsive design for all devices
 - 🔥 **Hot Reload** - Development with Turbopack
-- 🐳 **Docker Ready** - Containerized deployment
+- 🐳 **Docker Ready** - Optional containerized deployment
 - ⚡ **Server Actions** - Modern form handling with Next.js
 - 🔒 **Type Safe** - Full TypeScript implementation
 
@@ -28,7 +34,7 @@ Deploy the project using the instructions in [Deployment](#-deploy-to-vercel).
 - **Styling**: TailwindCSS 4.0, Shadcn/ui components
 - **Database**: Supabase PostgreSQL through the Supabase JavaScript client
 - **Code Editor**: CodeMirror with syntax highlighting
-- **Deployment**: Docker or any Node.js host
+- **Deployment**: Vercel, Docker, or any Node.js host
 - **Development**: Turbopack, ESLint, TypeScript
 
 ## 🚀 Quick Start
@@ -97,7 +103,6 @@ CodeSnippets/
 ├── supabase/
 │   └── schema.sql             # Table and row-level security policies
 ├── Dockerfile               # Docker configuration
-├── railway.json            # Legacy deployment config
 └── package.json            # Dependencies
 ```
 
@@ -117,7 +122,7 @@ create table public."Snippet" (
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run db:setup` - Print the Supabase SQL setup instruction
+- `npm run db:setup` - Display the Supabase setup instruction
 
 ## 🚀 Deploy to Vercel
 
@@ -171,11 +176,15 @@ https://your-project.vercel.app/api/health
 
 Create a test snippet and confirm that it appears in the Supabase table.
 
+The Vercel build should finish with a successful `Next.js 15.5.28` production build.
+
 ### Important security note
 
 The current app has no login system. The SQL policies intentionally allow public users to read, create, edit, and delete snippets. Anyone with access to the deployed app can therefore modify its snippets. Add authentication and user-specific policies before using it for private or sensitive code.
 
 ## 🔧 Environment Variables
+
+Create a local `.env` file from `.env.example`. Do not commit `.env`.
 
 ```bash
 # Supabase project URL
@@ -184,6 +193,16 @@ NEXT_PUBLIC_SUPABASE_URL="https://your-project-ref.supabase.co"
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY="sb_publishable_your-key"
 PORT=3000
 ```
+
+## 📍 Application Routes
+
+| Route | Purpose |
+|---|---|
+| `/` | View all saved snippets |
+| `/snippet/new` | Create a snippet |
+| `/snippet/[id]` | View a snippet |
+| `/snippet/[id]/edit` | Edit a snippet |
+| `/api/health` | Check application health |
 
 ## 🎨 Key Features
 
