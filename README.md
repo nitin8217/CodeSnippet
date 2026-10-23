@@ -2,7 +2,7 @@
 
 A beautiful, modern web application for managing and sharing your code snippets. Built with Next.js 15, Supabase, and TailwindCSS.
 
-![CodeSnippets App](https://img.shields.io/badge/Next.js-15.4.5-black?style=for-the-badge&logo=next.js)
+![CodeSnippets App](https://img.shields.io/badge/Next.js-15.5.28-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
 ## 🌐 Live Demo
@@ -24,7 +24,7 @@ Deploy the project using the instructions in [Deployment](#-deploy-to-vercel).
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 15.4.5, React 19, TypeScript
+- **Frontend**: Next.js 15.5.28, React 19, TypeScript
 - **Styling**: TailwindCSS 4.0, Shadcn/ui components
 - **Database**: Supabase PostgreSQL through the Supabase JavaScript client
 - **Code Editor**: CodeMirror with syntax highlighting
