@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { EyeIcon, PlusIcon } from "lucide-react";
 
@@ -7,7 +7,11 @@ import { EyeIcon, PlusIcon } from "lucide-react";
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const snippets = await prisma.snippet.findMany();
+  const { data: snippets, error } = await supabase
+    .from("Snippet")
+    .select("id, title, code")
+    .order("id", { ascending: false });
+  if (error) throw new Error(`Unable to load snippets: ${error.message}`);
   
   return (
     <div className="max-w-6xl mx-auto">

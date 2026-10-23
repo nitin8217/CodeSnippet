@@ -1,30 +1,23 @@
 "use server"
 
-import { prisma } from "@/lib/prisma"
+import { supabase } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 export const saveSnippet = async (id:number, code:string, title:string) =>
 {
-  await prisma.snippet.update({
-    where: { 
-        id,
-     },
-    data: { 
-        code,
-        title
-    },
-  });
+  const { error } = await supabase
+    .from("Snippet")
+    .update({ code, title })
+    .eq("id", id);
+  if (error) throw new Error(`Unable to update snippet: ${error.message}`);
   revalidatePath(`/snippet/${id}`);
   redirect(`/snippet/${id}`);
 }
 
 export const deleteSnippet = async (id:number) =>
 {
-  await prisma.snippet.delete({
-    where: { 
-        id,
-     },
-  });
+  const { error } = await supabase.from("Snippet").delete().eq("id", id);
+  if (error) throw new Error(`Unable to delete snippet: ${error.message}`);
   revalidatePath("/");
   redirect("/");
 }
@@ -38,12 +31,8 @@ export async function createSnippet(prevState:{message:string},formData:FormData
         if(!code || typeof code!== "string"){
           return{message:"Code is required"}
         }
-        await prisma.snippet.create({
-            data:{
-                title,
-                code
-            }
-        });
+        const { error } = await supabase.from("Snippet").insert({ title, code });
+        if (error) throw new Error(`Unable to create snippet: ${error.message}`);
         
        // throw new Error("Oops! Something went wrong. Please try again later.");
        revalidatePath("/");

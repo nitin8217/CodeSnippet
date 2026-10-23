@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import React from "react";
 import * as actions from "@/actions";
@@ -17,9 +17,12 @@ const SnippetDetailPage = async ({ params }: SnippetDetailProps) => {
   const resolvedParams = await params;
   const id = parseInt(resolvedParams.id);
   
-  const snippet = await prisma.snippet.findUnique({
-    where: { id }
-  });
+  const { data: snippet, error } = await supabase
+    .from("Snippet")
+    .select("id, title, code")
+    .eq("id", id)
+    .maybeSingle();
+  if (error) throw new Error(`Unable to load snippet: ${error.message}`);
 
   if (!snippet) notFound();
 

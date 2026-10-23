@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import type { Snippet } from '@/generated/prisma'
+import type { Snippet } from '@/lib/snippet'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
